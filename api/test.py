@@ -1,14 +1,14 @@
 import requests
+import settings
 from pathlib import Path
+
 
 BASE = "http://localhost:5000/"
 
-path = Path(__file__).parent / "music_data/abc.mp3"
-
-data = open(path, 'rb')
+data = open(f"{settings.BASE_AUDIO_META}/abc.mp3", 'rb')
 headers = {'content-type': 'audio/mpeg'}
 
 response = requests.put(
-    BASE + "music/soad/aerials", data=data, headers=headers)
+    BASE + "music/godsmack/awake", data=data, headers=headers)
 
 print(response.json())

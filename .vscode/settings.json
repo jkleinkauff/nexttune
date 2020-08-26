@@ -1,3 +1,7 @@
 {
-  "python.formatting.provider": "autopep8"
+  "python.formatting.provider": "autopep8",
+  "editor.rulers": [90],
+  "workbench.colorCustomizations": {
+    "editorRuler.foreground": "#ff4081"
+  }
 }

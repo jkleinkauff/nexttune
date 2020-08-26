@@ -1,11 +1,11 @@
 import sentry_sdk
-from flask import Flask
+from flask import Flask, request
 from flask_restful import Api, Resource, reqparse, abort
 from sentry_sdk.integrations.flask import FlaskIntegration
-from flask import request
+import settings
 
 sentry_sdk.init(
-    dsn="",
+    dsn=settings.SENTRY_DNS,
     integrations=[FlaskIntegration()]
 )
 
@@ -18,7 +18,6 @@ class CustomApi(Api):
 
 app = Flask(__name__)
 api = CustomApi(app)
-
 
 musics = {}
 
@@ -36,12 +35,13 @@ class Music(Resource):
         music = {}
         music["artist"] = artist
         music["songname"] = songname
-        with open(f"./{artist}_{songname}.mp3", "wb") as f:
+        with open(f"{settings.BASE_AUDIO_META}/{artist}_{songname}.mp3", "wb") as f:
             f.write(request.data)
             f.close()
         return music, 201
 
 
 api.add_resource(Music, "/music/<string:artist>/<string:songname>")
+
 if __name__ == "__main__":
     app.run(debug=True)
