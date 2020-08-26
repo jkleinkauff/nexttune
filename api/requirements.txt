@@ -1,0 +1,4 @@
+flask
+flask-restful
+sentry-sdk[flask]==0.16.2
+blinker

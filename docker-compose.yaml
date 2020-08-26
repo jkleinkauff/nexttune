@@ -1,0 +1,11 @@
+version: "3" # version of compose format
+
+services:
+  nexttune-api:
+    build: ./api # path is relative to docker-compose.yml localtion
+    volumes:
+      - ./api:/usr/src/app # mount point
+    environment:
+      - SENTRY_DNS
+    ports:
+      - 5001:80 # host:container

@@ -26,10 +26,12 @@ music_post_args = reqparse.RequestParser()
 #     "audio_data", type=bytes, location="data", help="music audio", required=True)
 
 
-class Music(Resource):
+class MusicListResource(Resource):
     def get(self):
-        return musics
+        return "musics"
 
+
+class MusicResource(Resource):
     def put(self, artist, songname):
         # args = music_post_args.parse_args()
         music = {}
@@ -41,7 +43,10 @@ class Music(Resource):
         return music, 201
 
 
-api.add_resource(Music, "/music/<string:artist>/<string:songname>")
+api.add_resource(MusicListResource, "/music")
+api.add_resource(MusicResource, "/music/<string:artist>/<string:songname>")
+
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=80, debug=True)
+    # app.run(debug=True)
