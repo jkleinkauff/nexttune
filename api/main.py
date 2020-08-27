@@ -2,7 +2,10 @@ import sentry_sdk
 from flask import Flask, request
 from flask_restful import Api, Resource, reqparse, abort
 from sentry_sdk.integrations.flask import FlaskIntegration
-import settings
+from api.resources.music import MusicResource, MusicListResource
+from api.resources.genre import GenreListResource
+from api import settings
+
 
 sentry_sdk.init(
     dsn=settings.SENTRY_DNS,
@@ -16,37 +19,21 @@ class CustomApi(Api):
         return ({"error": str(e)}), e.code
 
 
-app = Flask(__name__)
-api = CustomApi(app)
+def create_app(test_config=None):
+    """Create and configure an instance of the Flask application."""
+    app = Flask(__name__)
+    api = CustomApi(app)
 
-musics = {}
+    api.add_resource(MusicListResource, "/music")
+    api.add_resource(
+        MusicResource, "/music/<string:genre>/<string:artist>/<string:songname>")
 
-music_post_args = reqparse.RequestParser()
-# music_post_args.add_argument(
-#     "audio_data", type=bytes, location="data", help="music audio", required=True)
+    api.add_resource(GenreListResource, "/genre")
 
-
-class MusicListResource(Resource):
-    def get(self):
-        return "musics"
-
-
-class MusicResource(Resource):
-    def put(self, artist, songname):
-        # args = music_post_args.parse_args()
-        music = {}
-        music["artist"] = artist
-        music["songname"] = songname
-        with open(f"{settings.BASE_AUDIO_META}/{artist}_{songname}.mp3", "wb") as f:
-            f.write(request.data)
-            f.close()
-        return music, 201
+    return app
 
 
-api.add_resource(MusicListResource, "/music")
-api.add_resource(MusicResource, "/music/<string:artist>/<string:songname>")
-
+app = create_app()
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=80, debug=True)
-    # app.run(debug=True)
+    app.run(host="0.0.0.0", port=5000)
