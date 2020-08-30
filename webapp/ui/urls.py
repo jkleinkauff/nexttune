@@ -1,7 +1,9 @@
 # djbootstrap4/bootstrap4/urls.py
-from django.conf.urls import url
-from . import views
+from django.urls import path
+from . import views, views_login_callback
 
 urlpatterns = [
-    url(r'', views.ui_index, name="index"),
+    path("", views.index, name="index"),
+    path("login", views.ui_login, name="login-spotify"),
+    path("callback", views_login_callback.spotify_callback),
 ]
