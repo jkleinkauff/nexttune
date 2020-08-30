@@ -1,7 +1,12 @@
 {
-  "python.formatting.provider": "autopep8",
+  "python.formatting.provider": "black",
+  "python.formatting.blackArgs": ["--line-length", "90"],
+  // "python.formatting.autopep8Args": ["--max-line-length", "90", "--experimental"],
   "editor.rulers": [90],
   "workbench.colorCustomizations": {
     "editorRuler.foreground": "#ff4081"
-  }
+  },
+
+  "python.formatting.blackPath": "/home/jhonatas/miniconda3/envs/nexttune/bin/black",
+  "editor.formatOnSave": true
 }

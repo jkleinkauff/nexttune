@@ -140,3 +140,8 @@ cython_debug/
 
 # audio files
 *.mp3
+
+# prettier
+
+.prettierignore
+.prettierrc
