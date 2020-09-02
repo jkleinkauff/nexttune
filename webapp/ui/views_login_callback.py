@@ -1,20 +1,21 @@
 from django.http import HttpResponse
 from . import spotify_utils
+from .spotify_utils import SpotifyHelper
 
 
 def spotify_callback(request):
-    import pdb
-
-    pdb.set_trace()
-    sp_oauth = spotify_utils.get_oauth_obj()
     code = request.GET["code"]
-    token_info = sp_oauth.get_access_token(code, check_cache=False)
-    spotify_utils.save_session(request, "token_info", token_info, clear_current=True)
+    token_info = SpotifyHelper().get_access_token(code)
+    request.session["token_info"] = token_info
+    print(token_info)
+
+    # sp_oauth = spotify_utils.get_oauth_obj()
+    # code = request.GET["code"]
+    # token_info = sp_oauth.get_access_token(code, check_cache=False)
+    # spotify_utils.save_session(request, "token_info", token_info, clear_current=True)
 
     # return redirect("/")
-    return HttpResponse(
-        '<script type="text/javascript">window.close(); window.parent.location.href = "/";</script>'
-    )
+    return HttpResponse('<script type="text/javascript">window.close();</script>')
 
 
 def go(request):

@@ -33,9 +33,9 @@ ALLOWED_HOSTS = []
 # spotify settings
 SPOTIFY_CALLBACK = os.environ["SPOTIFY_CALLBACK"]
 SPOTIFY_API_BASE = "https://accounts.spotify.com"
-SPOTIFY_SCOPE = "playlist-modify-private,playlist-modify-public,user-top-read"
-SPOTIFY_APP_CLI_ID = "cc2e35a96ef349d598c02fbede215b4c"
-SPOTIFY_APP_CLI_SEC = "a4ccc517d75a47ecb7e6901b44e254f9"
+SPOTIFY_SCOPE = os.environ["SPOTIFY_SCOPE"]
+SPOTIFY_APP_CLI_ID = os.environ["SPOTIFY_APP_CLI_ID"]
+SPOTIFY_APP_CLI_SEC = os.environ["SPOTIFY_APP_CLI_SEC"]
 
 # Application definition
 

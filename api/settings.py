@@ -10,5 +10,11 @@ BASE_API = "api"
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_AUDIO_META = f"{BASE_DIR}/{BASE_API}/music_data"
 SENTRY_DNS = os.environ["SENTRY_DNS"]
+# spotify settings
+SPOTIFY_CALLBACK = os.environ["SPOTIFY_CALLBACK"]
+SPOTIFY_API_BASE = os.environ["SPOTIFY_API_BASE"]
+SPOTIFY_SCOPE = os.environ["SPOTIFY_SCOPE"]
+SPOTIFY_APP_CLI_ID = os.environ["SPOTIFY_APP_CLI_ID"]
+SPOTIFY_APP_CLI_SEC = os.environ["SPOTIFY_APP_CLI_SEC"]
 
 print(SENTRY_DNS)
