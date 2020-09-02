@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "***REMOVED***"
+SECRET_KEY = "sbsb%m)7j=)132rc)xoe7-n=b*^k9hjq-whz0nmt3dc&77#mr1"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -33,9 +33,9 @@ ALLOWED_HOSTS = []
 # spotify settings
 SPOTIFY_CALLBACK = os.environ["SPOTIFY_CALLBACK"]
 SPOTIFY_API_BASE = "https://accounts.spotify.com"
-SPOTIFY_SCOPE = "playlist-modify-private,playlist-modify-public,user-top-read"
-SPOTIFY_APP_CLI_ID = "***REMOVED***"
-SPOTIFY_APP_CLI_SEC = "***REMOVED***"
+SPOTIFY_SCOPE = os.environ["SPOTIFY_SCOPE"]
+SPOTIFY_APP_CLI_ID = os.environ["SPOTIFY_APP_CLI_ID"]
+SPOTIFY_APP_CLI_SEC = os.environ["SPOTIFY_APP_CLI_SEC"]
 
 # Application definition
 

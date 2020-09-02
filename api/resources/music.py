@@ -10,7 +10,7 @@ from api import settings
 class MusicListResource(Resource):
     def get(self):
 
-        return "musics spotify"
+        return "musics spotifyyyy"
 
 
 class MusicResource(Resource):

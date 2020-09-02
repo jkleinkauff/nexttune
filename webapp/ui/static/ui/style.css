@@ -29,6 +29,27 @@ body {
   font-weight: 600;
 }
 
+.get-recommendations {
+  position: relative;
+  height: 60px;
+  margin-bottom: 20px;
+  padding: 0 10px;
+  text-align: left;
+  font-size: 16px;
+  background-color: #1db954;
+  border: none;
+  border-radius: 6px;
+  text-align: center;
+}
+
+.get-recommendations span {
+  display: inline-block;
+  line-height: 60px;
+  color: #fff;
+  font-family: Montserrat, sans-serif;
+  font-weight: 600;
+}
+
 #btn_container {
   margin: 10px 0 0;
   width: 40px;
@@ -42,4 +63,166 @@ body {
   width: 150px;
   height: 150px;
   border-radius: 50%;
+}
+
+.top5 {
+  margin-top: 5px;
+}
+
+.top7 {
+  margin-top: 7px;
+}
+
+.top10 {
+  margin-top: 10px;
+}
+
+.top15 {
+  margin-top: 15px;
+}
+
+.top17 {
+  margin-top: 17px;
+}
+
+.top30 {
+  margin-top: 30px;
+}
+
+
+.lds-ripple {
+  display: inline-block;
+  position: relative;
+  width: 164px;
+  height: 164px;
+  cursor: pointer;
+}
+
+.lds-ripple div {
+  position: absolute;
+  border: 4px solid #191414;
+  border-radius: 50%;
+  animation: lds-ripple 1.8s cubic-bezier(0, .5, .9, 1) infinite
+}
+
+
+.lds-ripple div:nth-child(2) {
+  animation-delay: -.9s;
+}
+
+
+.Onboarding {
+  height: 90vh;
+  position: relative;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -ms-flex-align: center;
+}
+
+@keyframes lds-ripple {
+  0% {
+    top: 77px;
+    left: 77px;
+    width: 0;
+    height: 0;
+    opacity: 1;
+    border: 4px solid #2e5350;
+  }
+
+  to {
+    top: -1px;
+    left: -1px;
+    width: 158px;
+    height: 158px;
+    opacity: 0.2;
+    border: 4px solid #fff;
+  }
+}
+
+@keyframes lds-ripple-logged {
+  0% {
+    top: 77px;
+    left: 77px;
+    width: 0;
+    height: 0;
+    opacity: 1;
+    border: 4px solid green;
+  }
+
+  to {
+    top: -1px;
+    left: -1px;
+    width: 158px;
+    height: 158px;
+    opacity: 0.2;
+    border: 4px solid #fff;
+  }
+}
+
+.lds-ripple-header {
+  cursor: pointer;
+}
+
+.lds-ripple-header div {
+  border: 4px solid #191414;
+  border-radius: 50%;
+  animation: lds-ripple-header 8.8s cubic-bezier(0, 0.5, 0.9, 1) infinite;
+}
+
+.lds-ripple-header div:nth-child(2) {
+  animation-delay: -0.05s;
+}
+
+@keyframes lds-ripple-header {
+  0% {
+    top: 30px;
+    left: 30px;
+    width: 0;
+    height: 0;
+    opacity: 1;
+    border: 4px solid #ff0;
+  }
+
+  to {
+    top: -1px;
+    left: -1px;
+    width: 60px;
+    height: 60px;
+    opacity: 0.2;
+    border: 4px solid #fff;
+  }
+}
+
+@-webkit-keyframes twinkle {
+  0% {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@-moz-keyframes twinkle {
+  0% {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes twinkle {
+  0% {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
