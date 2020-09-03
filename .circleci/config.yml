@@ -1,8 +1,9 @@
-version: 2.1
+version: 2
 jobs:
   build:
+    environment:
+      - IMAGE_NAME: kleinkauff/webapp
+    working_directory: ~/builddir
     docker:
-      - image: circleci/node:4.8.2 # the primary container, where your job's commands are run
-    steps:
-      - checkout # check out the code in the project directory
-      - run: echo "hello world" # run the `echo` command
+      - image: circleci/python:3.6.4 # primary container for the build job
+      - dockerfile: ./webapp/Dockerfile
