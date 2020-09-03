@@ -6,6 +6,6 @@ jobs:
     working_directory: ~/builddir
     docker:
       - image: circleci/python:3.6.4 # primary container for the build job
-      - dockerfile: ./webapp/Dockerfile
     steps:
       - checkout
+      - setup_remote_docker
