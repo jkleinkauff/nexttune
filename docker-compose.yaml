@@ -12,7 +12,9 @@ services:
       - 5000:5000 # host:container
 
   nexttune:
-    build: ./webapp
+    build:
+      dockerfile: ./webapp/Dockerfile
+      context: .
     volumes:
       - ./webapp:/code
     environment:
