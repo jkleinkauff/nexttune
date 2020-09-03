@@ -1,10 +1,11 @@
-FROM python:3-onbuild  
+FROM python:3
 
-COPY . /usr/src/api
+ENV PYTHONUNBUFFERED 1
 
-ENV PYTHONPATH "."
-ENV FLASK_APP "main.py"
-WORKDIR /usr/src/api
-# CMD ["python", "main.py"]
+RUN mkdir /code
+WORKDIR /code
+COPY requirements.txt /code/
+RUN pip install -r requirements.txt
+COPY . /code/
 
-CMD ["flask", "run", "--host=0.0.0.0", "--port=5000"]
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
