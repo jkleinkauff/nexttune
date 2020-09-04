@@ -1,11 +1,13 @@
-version: 2
+version: 2.1
+executors:
+  docker-publisher:
+    environment:
+      IMAGE_NAME: kleinkauff/nexttune-webapp
+    docker:
+      - image: circleci/buildpack-deps:stretch
 jobs:
   build:
-    environment:
-      - IMAGE_NAME: kleinkauff/nexttune-webapp
-    working_directory: ~/builddir
-    docker:
-      - image: circleci/python:3.6.4 # primary container for the build job
+    executor: docker-publisher
     steps:
       - checkout
       - setup_remote_docker
@@ -14,10 +16,7 @@ jobs:
           command: docker build -t $IMAGE_NAME:latest -f webapp/Dockerfile .
 
   publish-dockerhub:
-    environment:
-      - IMAGE_NAME: kleinkauff/nexttune-webapp
-    docker:
-      - image: circleci/buildpack-deps:stretch
+    executor: docker-publisher
     steps:
       - setup_remote_docker
       - run:
@@ -27,7 +26,7 @@ jobs:
             docker push $IMAGE_NAME:latest
 
 workflows:
-  version: 2
+  version: 2.1
   build-master:
     jobs:
       - build:
