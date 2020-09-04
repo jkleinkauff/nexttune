@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     environment:
-      - IMAGE_NAME: kleinkauff/webapp
+      - IMAGE_NAME: kleinkauff/nexttune-webapp
     working_directory: ~/builddir
     docker:
       - image: circleci/python:3.6.4 # primary container for the build job
@@ -15,7 +15,7 @@ jobs:
 
   publish-dockerhub:
     environment:
-      - IMAGE_NAME: webapp
+      - IMAGE_NAME: nexttune-webapp
     docker:
       - image: circleci/buildpack-deps:stretch
     steps:
@@ -24,7 +24,6 @@ jobs:
           name: Publish image to Docker hub
           command: |
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker push $IMAGE_NAME:latest
 
 workflows:
   version: 2
