@@ -21,7 +21,7 @@ jobs:
     steps:
       - setup_remote_docker
       - run:
-        name: Publish image to Docker hub
-        command: |
-          echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-          docker push $IMAGE_NAME:latest
+          name: Publish image to Docker hub
+          command: |
+            echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
+            docker push $IMAGE_NAME:latest
