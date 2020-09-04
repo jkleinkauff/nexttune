@@ -15,7 +15,7 @@ jobs:
 
   publish-dockerhub:
     environment:
-      - IMAGE_NAME: nexttune-webapp
+      - IMAGE_NAME: kleinkauff/nexttune-webapp
     docker:
       - image: circleci/buildpack-deps:stretch
     steps:
@@ -24,6 +24,7 @@ jobs:
           name: Publish image to Docker hub
           command: |
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
+            docker push $IMAGE_NAME:latest
 
 workflows:
   version: 2
