@@ -1,0 +1,17 @@
+version: "3" # version of compose format
+
+services:
+  nexttune:
+    build:
+      dockerfile: ./webapp/Dockerfile
+      context: .
+    volumes:
+      - ./webapp:/code
+    environment:
+      - SPOTIFY_CALLBACK
+      - SPOTIFY_SCOPE
+      - SPOTIFY_APP_CLI_ID
+      - SPOTIFY_APP_CLI_SEC
+      - APP_KEY
+    ports:
+      - 8000:8000

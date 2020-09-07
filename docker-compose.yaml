@@ -1,4 +1,4 @@
-version: '3' # version of compose format
+version: "3" # version of compose format
 
 services:
   nexttune-api:
@@ -12,11 +12,6 @@ services:
       - 5000:5000 # host:container
 
   nexttune:
-    build:
-      dockerfile: ./webapp/Dockerfile
-      context: .
-    volumes:
-      - ./webapp:/code
     environment:
       - SPOTIFY_CALLBACK
       - SPOTIFY_SCOPE
