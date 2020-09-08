@@ -26,8 +26,8 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 SECRET_KEY = os.environ["APP_KEY"]
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True if os.environ["DEBUG"] == 1 else False
-
+# DEBUG = True if os.environ["DEBUG"] == 1 else False
+DEBUG = True
 ALLOWED_HOSTS = os.environ["HOSTS"]
 
 # spotify settings
