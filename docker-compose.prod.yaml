@@ -3,6 +3,7 @@ version: "3" # version of compose format
 services:
   nexttune:
     image: kleinkauff/nexttune-webapp
+    env_file: .env
     environment:
       - SPOTIFY_CALLBACK
       - SPOTIFY_SCOPE
