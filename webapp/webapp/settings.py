@@ -28,7 +28,7 @@ SECRET_KEY = os.environ["APP_KEY"]
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = os.environ["HOSTS"]
 
 # spotify settings
 SPOTIFY_CALLBACK = os.environ["SPOTIFY_CALLBACK"]
@@ -130,5 +130,5 @@ USE_TZ = True
 
 STATIC_URL = "/static/"
 
-
+USE_X_FORWARDED_HOST = True
 SESSION_ENGINE = "django.contrib.sessions.backends.signed_cookies"
