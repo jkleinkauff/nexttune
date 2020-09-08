@@ -10,5 +10,7 @@ services:
       - SPOTIFY_APP_CLI_ID
       - SPOTIFY_APP_CLI_SEC
       - APP_KEY
+      - HOSTS
+      - DEBUG
     ports:
       - 8000:8000
