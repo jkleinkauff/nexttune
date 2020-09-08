@@ -12,6 +12,7 @@ services:
       - 5000:5000 # host:container
 
   nexttune:
+    env_file: ./webapp/.env
     environment:
       - SPOTIFY_CALLBACK
       - SPOTIFY_SCOPE
