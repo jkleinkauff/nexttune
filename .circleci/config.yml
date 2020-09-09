@@ -35,6 +35,16 @@ jobs:
           command: |
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
             docker push $IMAGE_NAME:latest
+  deploy-digital-ocean:
+    executor: docker-publisher
+    steps:
+      - attach_workspace:
+          at: /tmp/workspace
+      - setup_remote_docker
+      - run:
+          name: Deploy app to Digital Ocean
+          command: |
+            ssh -o StrictHostKeyChecking=no $digitalocean "cd /var/www/nexttune && make pull-and-deploy-prod"
 
 workflows:
   version: 2.1
@@ -47,6 +57,12 @@ workflows:
       - publish-dockerhub:
           requires:
             - build
+          filters:
+            branches:
+              only: master
+      - deploy-digital-ocean:
+          requires:
+            - publish-dockerhub
           filters:
             branches:
               only: master
