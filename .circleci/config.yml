@@ -47,7 +47,7 @@ jobs:
       - run:
           name: Deploy app to Digital Ocean
           command: |
-            ssh -o "StrictHostKeyChecking no" $DROPLET_USER@$DROPLET_IP "cd /var/www/nexttune && make pull-and-deploy-prod"
+            ssh -v -o "StrictHostKeyChecking no" $DROPLET_USER@$DROPLET_IP "cd /var/www/nexttune && make pull-and-deploy-prod"
 
 workflows:
   version: 2.1
