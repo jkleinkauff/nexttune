@@ -43,7 +43,7 @@ jobs:
       - setup_remote_docker
       - add_ssh_keys:
           fingerprints:
-            - "4e:66:00:f6:11:02:a3:62:2e:8d:6c:18:b4:a6:57:76"
+            - "dc:73:c6:76:28:6a:14:0d:8d:f5:5c:67:6b:5b:a8:d3"
       - run:
           name: Deploy app to Digital Ocean
           command: |
