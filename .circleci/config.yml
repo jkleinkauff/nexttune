@@ -40,6 +40,9 @@ jobs:
     steps:
       - attach_workspace:
           at: /tmp/workspace
+      - add_ssh_keys:
+          fingerprints:
+            - "SO:ME:FIN:G:ER:PR:IN:T"
       - setup_remote_docker
       - run:
           name: Deploy app to Digital Ocean
