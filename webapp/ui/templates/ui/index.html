@@ -141,7 +141,7 @@
       When it complete (or errors)*/
       $.ajax({
         type: "GET",
-        url: "http://localhost:8000/current_playing",
+        url: window.location.href + "current_playing",
 
         async: true,
         /* If set to non-async, browser shows page as "Loading.."*/
