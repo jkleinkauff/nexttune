@@ -145,3 +145,4 @@ cython_debug/
 
 .prettierignore
 .prettierrc
+api/download_pool_nexttune_sliced_spectrograms/

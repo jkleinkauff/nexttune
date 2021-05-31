@@ -1,6 +1,13 @@
 flask
 flask-restful
+#numpy
+# numpy==1.13.3
+opencv-python==4.4.0.42
+# opencv-python
 sentry-sdk[flask]==0.16.2
 blinker
 pytest
 python-dotenv
+Keras==2.4.3
+tensorflow==2.2.0
+h5py==2.10.0

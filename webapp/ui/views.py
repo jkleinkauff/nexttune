@@ -32,4 +32,12 @@ def play_song(request, track_id):
 
 def current_track(request):
     result = SpotifyWrapper(request.session).current_playing()
+    # return "asdada"
     return JsonResponse(result)
+
+
+def get_recommendation(request):
+    # downloads current track
+    # parse audio
+    # send to model
+    return None

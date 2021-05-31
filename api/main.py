@@ -4,6 +4,7 @@ from flask_restful import Api, Resource, abort
 from sentry_sdk.integrations.flask import FlaskIntegration
 from api.resources.music import MusicResource, MusicListResource
 from api.resources.genre import GenreListResource
+from api.resources.recommendation import RecommendationResource
 
 
 # from api.resources.spotify import SpotifyLogin
@@ -27,6 +28,7 @@ def create_app(test_config=None):
     api.add_resource(
         MusicResource, "/music/<string:genre>/<string:artist>/<string:songname>"
     )
+    api.add_resource(RecommendationResource, "/recommendation/<string:user>")
 
     return app
 
