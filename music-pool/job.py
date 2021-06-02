@@ -3,11 +3,13 @@ from audio import Audio
 from PIL import Image
 import settings
 import os
+import sys
 
 
 def download_playlists(playlist_folder, output):
-    for i, (dirpath, dirnames, filenames) in enumerate(os.walk(playlist_folder)):
-        if dirpath is not playlist_folder:
+    for i, (dirpath, dirnames, filenames) in enumerate(os.walk(playlist_folder)):    
+        has_genre = not not (os.path.split(playlist_folder)[-1]) 
+        if (not has_genre and dirpath is not playlist_folder) or has_genre:
             for f in filenames:
                 pl = YoutubePlaylist(dirpath, f)
                 pl.start_download(output, settings.AUDIO_PLAYLIST_ARCHIVE)
@@ -50,17 +52,24 @@ def slice_spectrograms(spectrograms_folder, output):
 
 if __name__ == "__main__":
     try:
+        download_genre = ""
+        if len (sys.argv) > 1:
+            download_genre = sys.argv[1]
+
+        playlist_folder = f"{settings.AUDIO_PLAYLIST_FOLDER}/{download_genre}"
+        import pdb;
+        pdb.set_trace()
         # download playlists from AUDIO_PLAYLIST_FOLDER
-        # download_playlists(settings.AUDIO_PLAYLIST_FOLDER, settings.AUDIO_DOWNLOAD_FOLDER)
+        download_playlists(playlist_folder, settings.AUDIO_DOWNLOAD_FOLDER)
         # trim audio files
         # trim_audio_files(settings.AUDIO_DOWNLOAD_FOLDER, settings.AUDIO_30SEC_FOLDER)
         # create_spectrograms(
         #     settings.AUDIO_30SEC_FOLDER, settings.AUDIO_SPECTROGRAM_FOLDER
         # )
 
-        slice_spectrograms(
-            settings.AUDIO_SPECTROGRAM_FOLDER, settings.AUDIO_SLICED_SPECTROGRAM_FOLDER
-        )
+        # slice_spectrograms(
+            # settings.AUDIO_SPECTROGRAM_FOLDER, settings.AUDIO_SLICED_SPECTROGRAM_FOLDER
+        # )
 
     except Exception as ex:
         print(ex)
